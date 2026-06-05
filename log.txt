@@ -2,3 +2,14 @@
 1780336142612: GET: /api/users/1003
 1780336156448: GET: /api/users/1001
 1780336310378: ::1: POST: /api/users
+1780500550952: ::1: GET: /users
+1780500551537: ::1: GET: /favicon.ico
+1780500553193: ::1: GET: /users
+1780500589266: ::1: GET: /api/users
+1780500717629: ::1: GET: /api/users
+1780679756809: ::1: GET: /favicon.ico
+1780679884210: ::1: POST: /api/users
+1780680148462: ::1: POST: /api/users
+1780680165150: ::1: POST: /api/users
+1780680467221: ::1: GET: /api/users/1007
+1780680473116: ::1: GET: /api/users/1004

@@ -33,6 +33,8 @@ app.get('/users', (req, res) => {
 
 app.get('/api/users', (req, res) => {
     // console.log('I am in get route', req.myUserName);
+    res.setHeader('X-myName', 'Syed Areeb');  // Custom Headers should start with X- to avoid conflicts with standard headers
+    console.log(req.headers);
     return res.json(users);
 })
 
@@ -41,6 +43,9 @@ app
 .get((req, res) => {
     const id = Number(req.params.id);
     const user = users.find(user => user.id === id);
+    if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+    }
 
     return res.json(user);
 })
@@ -80,9 +85,12 @@ app
 
 app.post('/api/users', (req, res) => {
     const body = req.body;
+    if (!body.first_name || !body.last_name || !body.email || !body.gender || !body.job_title) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
     users.push({...body, id: users.length+1});
     fs.writeFile('./MOCK_DATA.json', JSON.stringify(users), (err, data) => {
-        return res.json({status: 'Success!', id: users.length});
+        return res.status(201).json({status: 'Success!', id: users.length});
     })
 })
 
